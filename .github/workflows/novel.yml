@@ -10,8 +10,7 @@ jobs:
         run: pip install lxml
       - name: run python
         run: python novel.py
-      - name: commit
-        run: |
-          echo "$flag"
-        env:
-          flag: nihao
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
