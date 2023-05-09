@@ -51,7 +51,6 @@ def is_latest():
         next_chapter = file.read()
         new_chapter = latest_a.xpath('text()')[0]
         if new_chapter == next_chapter:
-            print('yes')
             pass
         else:
             file.seek(0)
