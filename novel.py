@@ -40,8 +40,13 @@ def send_message(message, subject):
         server.login(sender, psw)
         server.sendmail(sender, receiver, msg.as_string())
         server.quit()
+        flag = '发送成功'
     except:
-        pass
+        flag = '发送失败'
+
+    with open('./log.txt', 'a+', encoding='utf-8') as file:
+        date = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
+        file.write(date + '\t' + subject + '\t' + flag + '\n')
     pass
 
 
