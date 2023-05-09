@@ -10,3 +10,10 @@ jobs:
         run: pip install lxml
       - name: run python
         run: python novel.py
+      - name: Push local repository changes
+        id: push-local-repository-changes
+        uses: reloc8/action-push-local-changes@1.0.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          commit-message: 'Create new file'
