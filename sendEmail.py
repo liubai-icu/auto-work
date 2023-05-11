@@ -7,7 +7,8 @@ from email.mime.text import MIMEText
 
 sender = '3504448058@qq.com'
 receiver = '3504448058@qq.com'
-pwd = os.getenv('email_token')
+# pwd = os.getenv('email_token')
+pwd = 'fqrubkoiihsgcihi'
 
 
 def send_novel(message, subject):
@@ -24,23 +25,28 @@ def send_novel(message, subject):
         content += x
     content += '</div></body></html>'
     msg = MIMEText(content, 'html', 'utf-8')
-    print(content)
     send(subject, msg)
 
 
-def send_day_60s(response):
+def send_day_60s(top_img, content):
     subject = '每天60s读懂世界'
-    content = """
+    message = """
         <html>
-            <body>
-                <img src="cid:img"/>
-            </body>
-        </html>
+        <style type="text/css">
+            p{font-size:14px;font-family: Arial,serif;text-indent: 2em}
+        </style>
+        <body>
+            <img src="cid:img"/>
     """
-    msg = MIMEText(content, 'html', 'utf-8')  # 构建消息
-    img = MIMEImage(response.read())
+    for x in content:
+        message += x
+
+    message += '</body></html>'
+
+    msg = MIMEText(message, 'html', 'utf-8')  # 构建消息
+    img = MIMEImage(top_img.read())
     img.add_header('Content-ID', 'img')
-    send(subject, msg, img)
+    send(subject, img, msg)
 
 
 def send(subject, *args):
@@ -59,7 +65,6 @@ def send(subject, *args):
         server.login(sender, pwd)
         server.sendmail(sender, receiver, multipart.as_bytes())
         server.quit()
-        print('yes')
         flag = '发送成功'
     except:
         flag = '发送失败'
