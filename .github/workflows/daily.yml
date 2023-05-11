@@ -1,4 +1,4 @@
-name: latest novel
+name: 
 on: 
   # workflow_dispatch
   # 每天早上7-8点执行(北京时间)
