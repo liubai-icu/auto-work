@@ -1,9 +1,9 @@
 name: 
 on: 
-  # workflow_dispatch
+  workflow_dispatch
   # 每天早上7-8点执行(北京时间)
-  schedule:
-    - cron: "0 23 * * *"
+#   schedule:
+#     - cron: "0 23 * * *"
 
 jobs:
   novel:
