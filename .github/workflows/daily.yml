@@ -15,3 +15,7 @@ jobs:
         run: python dailyWork.py
         env:
           email_token: ${{ secrets.EMAIL_TOKEN }}
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
