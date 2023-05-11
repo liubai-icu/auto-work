@@ -16,6 +16,12 @@ jobs:
         run: python novel.py
         env:
           email_token: ${{ secrets.EMAIL_TOKEN }}
+      - name: commit chapter
+        run: |
+          git config --local user.email '3504448058@qq.com'
+          git config --local user.name 'liubai-icu'
+          git add ./novel.json ./log.txt
+          git commit -m 'add update' || git diff --exit-code
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
