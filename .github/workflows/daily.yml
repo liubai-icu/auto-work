@@ -1,8 +1,9 @@
 name: latest novel
 on: 
   # workflow_dispatch
+  # 每天早上7-8点执行(北京时间)
   schedule:
-    - cron: "0 * * * *"
+    - cron: "0 23 * * *"
 
 jobs:
   novel:
@@ -10,13 +11,7 @@ jobs:
     steps:
       - name: set up
         uses: actions/checkout@v3
-      - name: install
-        run: pip install lxml
       - name: run python
-        run: python novel.py
+        run: python dailyWork.py
         env:
           email_token: ${{ secrets.EMAIL_TOKEN }}
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
