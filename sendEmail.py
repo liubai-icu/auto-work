@@ -7,8 +7,7 @@ from email.mime.text import MIMEText
 
 sender = '3504448058@qq.com'
 receiver = '3504448058@qq.com'
-# pwd = os.getenv('email_token')
-pwd = 'fqrubkoiihsgcihi'
+pwd = os.getenv('email_token')
 
 
 def send_novel(message, subject):

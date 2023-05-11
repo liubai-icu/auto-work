@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: set up
         uses: actions/checkout@v3
+      - name: install 
+        run: pip install lxml
       - name: run python
         run: python dailyWork.py
         env:
